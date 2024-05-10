@@ -10,6 +10,8 @@
 
         public decimal Price { get; set; }
 
+        public Pizza() { }
+
         public Pizza(string nome, string description, string image, decimal price)
         {
             Nome = nome;
@@ -17,5 +19,12 @@
             Image = image;
             Price = price;
         }
+
+        /*public string PriceString()
+        {
+            string priceStringConvert = $"{Price} €";
+
+            return priceStringConvert;
+        }*/
     }
 }

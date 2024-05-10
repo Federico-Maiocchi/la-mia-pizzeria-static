@@ -1,11 +1,125 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
     Layout = null;
+
+    List<Pizza> pizze = new List<Pizza>();
+
+    pizze.Add(new Pizza
+            {
+                Nome = "Margherita",
+                Description = "Pizza Margherita , normale",
+                Image = "~/img/margherita.png",
+                Price = 8.99m
+            });
+    pizze.Add(new Pizza
+            {
+                Nome = "Capricciosa",
+                Description = "pizza capricciosa, molto capricciosa",
+                Image = "~/img/capricciosa.png",
+                Price = 9.99m
+            });
+    pizze.Add(new Pizza
+            {
+                Nome = "Quattro Stagioni",
+                Description = "Pizza quattro stagioni, in primavera è buona",
+                Image = "~/img/quattro-stagioni.png",
+                Price = 10.99m
+            });
+    pizze.Add(new Pizza
+            {
+                Nome = "Diavola",
+                Description = "Pizza diavola, è sempre arrabbiata",
+                Image = "~/img/diavola.png",
+                Price = 9.49m
+            });
+    pizze.Add(new Pizza
+            {
+                Nome = "Bufala",
+                Description = "pizza bufala, è uno scherzo",
+                Image = "~/img/bufala.png",
+                Price = 11.49m
+            });
+    
 }
 
 
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+   @*  <h1 class="display-4">Pizzeria ristorante</h1> *@
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    
+    <h1 class="display-4 p-1">Pizzeria ristorante</h1>
+    <h2 class="text-center">Lista di pizze</h2>
+
+    <div class="container p-2">
+        <div class="row">
+
+            @foreach (var itemPizza in pizze)
+            {
+                <div class="col-4">
+                    <div class="card-pizza">
+                        <h4 class="p-2">@itemPizza.Nome</h4>
+                        <img src="@Url.Content(itemPizza.Image)" alt="@itemPizza.Nome" />
+                        <p class="p-1">@itemPizza.Description</p>
+                        <p class="p-1">Prezzo: @itemPizza.Price &euro;</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </div>
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing:border-box;
+    }
+
+    .p-1 {
+        padding: 5px;
+    }
+
+    .p-2 {
+        padding: 10px;
+    }
+
+    .text-center {
+        text-align:center;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;  
+    }
+
+    .col-4 {
+        flex-basis: calc((100% / 12) * 4);
+        padding: 5px; 
+        
+    }
+
+    .col-6 {
+        flex-basis: calc((100% / 12) * 6);   
+    }
+
+    .card-pizza {
+        border: 1px solid black;
+        height: 100%;
+        border-radius: 22px;
+        
+    }
+
+    img {
+        width: 240px;
+        height: 150px;
+    }
+</style>
+
